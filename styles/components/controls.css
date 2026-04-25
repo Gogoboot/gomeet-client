@@ -1,57 +1,67 @@
 .room-controls {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background: var(--bg-secondary);
-    padding: 16px;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
-    margin-bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--bg-secondary);
+  padding: 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  margin-bottom: 16px;
 }
 
 .room-controls-group {
-    display: flex;
-    gap: 8px;
-    align-items: center;
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
 input[type="text"] {
-    padding: 10px 14px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-    background: var(--bg-tertiary);
-    color: var(--text-primary);
-    font-size: 0.95rem;
-    transition: border-color 0.2s;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
 }
 
 input[type="text"]:focus {
-    border-color: var(--accent);
+  border-color: var(--accent);
 }
 
 input[type="text"]::placeholder {
-    color: var(--text-muted);
+  color: var(--text-muted);
 }
 
 /* Статус сервера */
 .server-status {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.85rem;
-    color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
 }
 
-.server-status .dot { font-size: 1rem; }
-.status-connected .text    { color: var(--accent); }
-.status-connecting .text   { color: var(--warning); }
-.status-error .text        { color: var(--danger); }
+.server-status .dot {
+  font-size: 1rem;
+}
+.status-connected .text {
+  color: var(--accent);
+}
+.status-connecting .text {
+  color: var(--warning);
+}
+.status-error .text {
+  color: var(--danger);
+}
 
 @media (max-width: 768px) {
-    .room-controls { flex-direction: column; }
+  .room-controls {
+    flex-direction: column;
+  }
 }
 
 /* ==========================================
@@ -59,27 +69,71 @@ input[type="text"]::placeholder {
    ========================================== */
 @media (max-width: 768px) {
 
-    /* Панель комнаты — меньше отступы */
+    /* Панель комнаты — прозрачный фон, без рамки */
     .room-controls {
-        padding: 10px 12px;
-        gap: 6px;
+        padding: 8px 12px;
+        gap: 8px;
         margin-bottom: 0;
+        flex-direction: row;      /* в ряд */
+        flex-wrap: nowrap;        /* не переносим */
+        justify-content: center;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
     }
 
-    /* Поле ввода ID — короче чтобы влезло */
+    /* Группы тоже в ряд */
+    .room-controls-group {
+        flex-shrink: 0;
+    }
+
+    /* Поле ввода — растягиваем на всё свободное место */
     .room-controls input[type="text"] {
-        width: 120px;
-        font-size: 0.85rem;
-        padding: 8px 10px;
+        width: 100%;
+        min-width: 0;
+        flex: 1;
     }
 
-    /* Скрываем кнопку "Выйти" — она есть в controls-bar (красная трубка) */
+    /* Скрываем кнопку "Выйти" — она есть в controls-bar */
     .room-controls-group:last-child {
         display: none;
     }
 
-    /* Скрываем кнопку "Копировать" — на мобильном не нужна */
+    /* Скрываем кнопку копировать */
     #copyRoomBtn {
         display: none;
+    }
+
+    /* Кнопки — только иконки, текст скрыт */
+    #createBtn,
+    #joinBtn {
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        justify-content: center;
+        font-size: 0;             /* скрываем текст */
+        gap: 0;
+    }
+
+    /* Иконки внутри кнопок оставляем видимыми */
+    #createBtn svg,
+    #joinBtn svg {
+        flex-shrink: 0;
+    }
+
+    /* Кнопка создать — прозрачный фон */
+    #createBtn {
+        background: transparent !important;
+        border: 1px solid var(--accent);
+        color: var(--accent);
+        box-shadow: none;
+    }
+
+    /* Кнопка войти — прозрачный фон */
+    #joinBtn {
+        background: transparent !important;
+        border: 1px solid var(--border);
+        color: var(--text-primary);
+        box-shadow: none;
     }
 }
