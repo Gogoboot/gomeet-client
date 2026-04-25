@@ -1,0 +1,23 @@
+/* ==========================================
+   GOHUB — главный файл стилей
+   Только импорты, логика в модулях
+   ========================================== */
+
+/* База */
+@import './base/variables.css';
+@import './base/reset.css';
+@import './base/typography.css';
+
+/* Layout */
+@import './layout/header.css';
+@import './layout/app.css';
+
+/* Компоненты */
+@import './components/buttons.css';
+@import './components/video.css';
+@import './components/controls.css';
+@import './components/chat.css';
+@import './components/modal.css';
+@import './components/preview.css';
+@import './components/tabs.css';
+@import './components/drawer.css';
