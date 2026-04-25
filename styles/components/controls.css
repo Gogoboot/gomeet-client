@@ -53,3 +53,33 @@ input[type="text"]::placeholder {
 @media (max-width: 768px) {
     .room-controls { flex-direction: column; }
 }
+
+/* ==========================================
+   МОБИЛЬНАЯ ПАНЕЛЬ КОМНАТЫ — компактнее
+   ========================================== */
+@media (max-width: 768px) {
+
+    /* Панель комнаты — меньше отступы */
+    .room-controls {
+        padding: 10px 12px;
+        gap: 6px;
+        margin-bottom: 0;
+    }
+
+    /* Поле ввода ID — короче чтобы влезло */
+    .room-controls input[type="text"] {
+        width: 120px;
+        font-size: 0.85rem;
+        padding: 8px 10px;
+    }
+
+    /* Скрываем кнопку "Выйти" — она есть в controls-bar (красная трубка) */
+    .room-controls-group:last-child {
+        display: none;
+    }
+
+    /* Скрываем кнопку "Копировать" — на мобильном не нужна */
+    #copyRoomBtn {
+        display: none;
+    }
+}
